@@ -4,7 +4,7 @@ import time
 
 model = YOLO("best_n.pt")
 
-cap = cv2.VideoCapture('asset/vid_0.mp4')
+cap = cv2.VideoCapture('asset/output0.mp4')
 
 COLORS = dict()
 COLORS["white"] = (255, 255, 255)
@@ -19,7 +19,10 @@ while (True):
     new_frame_time = time.time()
     fps = 1/(new_frame_time-prev_frame_time)
     fps = "{:.2f}".format(fps)
+    # s = time.time() * 1000
     results = model.predict(frame, save=False, verbose=False)
+    # e = (time.time() * 1000) - s
+    # print(e)
     # print(results[0].boxes.xyxy)
     # print(results[0].boxes.cls)
     # print(results[0].names)
